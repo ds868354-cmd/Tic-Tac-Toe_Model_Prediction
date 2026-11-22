@@ -1,0 +1,11 @@
+{
+  "_comment": "Your model targets for ci.yml's quality gate. The floors (classification: roc_auc >= 0.5 and f1/recall/precision > 0; regression: r2 > 0) always apply; add stricter ones here, e.g. min: {roc_auc: 0.95, recall_positive: 0.8} for classification, or min: {r2: 0.7} and max: {rmse: 12.5} for regression. enforce=false downgrades failures to warnings. `min` was seeded from this run's metric minus a safety margin (0.05; 0.10 for r2) so a clearly worse retrain fails CI -- raise it as the model improves. NOTE: that seed is only a regression guard; a separate absolute baseline floor (skill_over_block_floor) and deployability_gate.json (DEPLOYABLE / DEMO-ONLY / BLOCKED) are checked regardless. enforce_deployability=false lets a BLOCKED model pass CI (not recommended); fail_on_demo_only=true (the default, for client delivery) makes DEMO-ONLY fail CI; set it to false only for internal demos.",
+  "enforce": true,
+  "enforce_deployability": true,
+  "fail_on_demo_only": true,
+  "min": {
+    "roc_auc": 0.949,
+    "accuracy": 0.934
+  },
+  "max": {}
+}

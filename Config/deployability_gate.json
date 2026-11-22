@@ -1,0 +1,80 @@
+{
+  "verdict": "DEPLOYABLE",
+  "applicable": true,
+  "model_type": "TABULAR_ML",
+  "task": "classification",
+  "reasons": [
+    {
+      "severity": "info",
+      "code": "small_test_cv_headline",
+      "message": "only 193 test rows: headline f1_macro = 0.995 (95% CI 0.987-1.000) from repeated_stratified_kfold 5-fold x 5 repeats.",
+      "value": null,
+      "threshold": null
+    }
+  ],
+  "thresholds": {
+    "enabled": true,
+    "classification": {
+      "min_error_reduction_block": 0.02,
+      "min_error_reduction_demo": 0.15,
+      "min_f1_skill_block": 0.05,
+      "min_f1_skill_demo": 0.3,
+      "never_predicted_block_frac": 0.5,
+      "min_recall_demo": 0.3,
+      "min_recall_support": 5,
+      "recall_block_level": 0.1,
+      "recall_block_frac": 0.5
+    },
+    "regression": {
+      "min_r2_block": 0.0,
+      "min_r2_demo": 0.3,
+      "min_mae_improvement_block": 0.0,
+      "min_mae_improvement_demo": 0.05,
+      "naive_skill_check": true,
+      "min_naive_skill_demo": 0.02
+    },
+    "small_data": {
+      "min_train_rows_block": 20,
+      "min_train_rows_demo": 200,
+      "min_test_rows_block": 10,
+      "min_test_rows_demo": 50,
+      "min_rows_per_class_block": 2,
+      "min_rows_per_class_demo": 10
+    },
+    "cv_gap": {
+      "demo": 0.15,
+      "block": 0.4
+    },
+    "label_conflict_row_share_demo": 0.2,
+    "perfect_score_action": "demo_only",
+    "deterministic_formula_action": "demo_only",
+    "allow_deterministic_formula": false,
+    "allow_perfect_score_small_dataset": true,
+    "small_dataset_max_images": 10000,
+    "small_dataset_cv_min": 0.95,
+    "small_dataset_cv_max_std": 0.03,
+    "allow_perfect_score": false,
+    "dl_worse_action": "demo_only",
+    "parity_fail_action": "demo_only",
+    "parity_required": true,
+    "fairness_disparity_action": "demo_only",
+    "sensitive_review_action": "demo_only"
+  },
+  "ci_floors": {
+    "skill_over_block_floor": 1e-09
+  },
+  "banner": "Deployability gate: DEPLOYABLE -- all configured checks passed. Bundle VERIFIED: hold-out metrics and export parity (PASSED).",
+  "fixed": [],
+  "warnings": [],
+  "export_parity_status": "PASSED",
+  "verification": {
+    "status": "VERIFIED",
+    "holdout_metrics_available": true,
+    "export_parity_status": "PASSED",
+    "subgroup_fairness": "NOT_APPLICABLE",
+    "subgroup_fairness_blocks_verification": false,
+    "note": "hold-out metrics and export parity both verified; subgroup fairness not applicable (does not block)"
+  },
+  "skill_over_block_floor": 0.9352238805970148,
+  "approximate_metrics": false
+}

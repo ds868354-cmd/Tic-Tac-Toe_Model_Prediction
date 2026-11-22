@@ -1,0 +1,180 @@
+{
+  "stages": [
+    {
+      "stage": "route",
+      "seconds": 48.84,
+      "nested": false
+    },
+    {
+      "stage": "run_dl_sanity_ann",
+      "seconds": 26.45,
+      "nested": true
+    },
+    {
+      "stage": "run_dl_extra_tuning",
+      "seconds": 26.07,
+      "nested": true
+    },
+    {
+      "stage": "run_tabular_ml_auto",
+      "seconds": 9.12,
+      "nested": true
+    },
+    {
+      "stage": "run_deployability_governance",
+      "seconds": 5.44,
+      "nested": false
+    },
+    {
+      "stage": "run_hyperparameter_search",
+      "seconds": 4.77,
+      "nested": true
+    },
+    {
+      "stage": "compute_honest_metrics",
+      "seconds": 3.09,
+      "nested": true
+    },
+    {
+      "stage": "compare_models_cv",
+      "seconds": 2.78,
+      "nested": true
+    },
+    {
+      "stage": "run_export_parity_test",
+      "seconds": 0.52,
+      "nested": true
+    },
+    {
+      "stage": "export_tree_ensemble_to_json",
+      "seconds": 0.14,
+      "nested": false
+    },
+    {
+      "stage": "run_shared_data_sanity",
+      "seconds": 0.09,
+      "nested": true
+    },
+    {
+      "stage": "verify_tree_export",
+      "seconds": 0.09,
+      "nested": false
+    },
+    {
+      "stage": "train_and_evaluate",
+      "seconds": 0.08,
+      "nested": true
+    },
+    {
+      "stage": "auto_preprocess",
+      "seconds": 0.05,
+      "nested": true
+    },
+    {
+      "stage": "run_shared_data_sanity",
+      "seconds": 0.05,
+      "nested": true
+    },
+    {
+      "stage": "audit_input_data_quality",
+      "seconds": 0.03,
+      "nested": true
+    },
+    {
+      "stage": "auto_preprocess",
+      "seconds": 0.03,
+      "nested": true
+    },
+    {
+      "stage": "generate_validation_report",
+      "seconds": 0.02,
+      "nested": false
+    },
+    {
+      "stage": "generate_app_py",
+      "seconds": 0.02,
+      "nested": false
+    },
+    {
+      "stage": "write_ci_and_guard_files",
+      "seconds": 0.02,
+      "nested": false
+    },
+    {
+      "stage": "build_feature_expansion",
+      "seconds": 0.01,
+      "nested": true
+    },
+    {
+      "stage": "export_classical_json",
+      "seconds": 0.0,
+      "nested": false
+    },
+    {
+      "stage": "generate_pipeline_run_summary",
+      "seconds": 0.0,
+      "nested": false
+    },
+    {
+      "stage": "generate_enterprise_bundle",
+      "seconds": 0.0,
+      "nested": false
+    },
+    {
+      "stage": "generate_analysis_notebook",
+      "seconds": 0.0,
+      "nested": false
+    },
+    {
+      "stage": "generate_readme",
+      "seconds": 0.0,
+      "nested": false
+    },
+    {
+      "stage": "verify_no_pickle_joblib",
+      "seconds": 0.0,
+      "nested": false
+    }
+  ],
+  "hardware": {
+    "cpu_cores": 2,
+    "cpu_vendor": "Intel",
+    "ram_total_gb": 13.605810176,
+    "ram_available_gb": 11.102568448,
+    "cuda": {
+      "available": true,
+      "count": 1,
+      "devices": [
+        {
+          "name": "Tesla T4",
+          "vram_gb": 15.6
+        }
+      ],
+      "source": "torch",
+      "torch_usable": true
+    },
+    "tpu": {
+      "available": false,
+      "device_count": 0,
+      "reason": "no TPU environment hints found"
+    },
+    "mps": false,
+    "deep_device": "cuda",
+    "booster_gpu": {
+      "xgboost": true
+    },
+    "notes": []
+  },
+  "scale_plan": {
+    "tier": "standard",
+    "n_rows": 958,
+    "n_cols": 10,
+    "est_peak_ram_gb": 0.0,
+    "ram_budget_gb": 6.66,
+    "fits_in_ram": true,
+    "ram_limited_rows": 23791218,
+    "rows_to_keep": 958,
+    "warnings": []
+  },
+  "ram_guard": null
+}

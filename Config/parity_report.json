@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "model_type": "TABULAR_ML",
+  "task": "classification",
+  "backends": {
+    "tree_ensemble_json": {
+      "n_rows": 193,
+      "row_errors": 0,
+      "first_error": null,
+      "max_difference": 2.220446049250313e-16,
+      "mean_difference": 1.2122840871625486e-18,
+      "difference_kind": "probability",
+      "mismatching_rows": 0,
+      "mismatching_row_indices": [],
+      "tolerance": {
+        "prob_tol": 0.001,
+        "label_mismatch_frac": 0.005
+      },
+      "status": "PASS",
+      "metrics": {
+        "deployed": {
+          "accuracy": 0.9844559585492227,
+          "f1_macro": 0.9827929507563374
+        },
+        "in_memory": {
+          "accuracy": 0.9844559585492227,
+          "f1_macro": 0.9827929507563374
+        }
+      }
+    }
+  },
+  "notes": [
+    "engineered columns (date parts, geo distance, frequency codes) are fed to the serving path as already-engineered values; log1p / ordinal / category-map expansions are re-derived by the serving path from their raw source columns"
+  ],
+  "tolerances": {
+    "prob_tol": 0.001,
+    "label_mismatch_frac": 0.005,
+    "reg_rel_tol": 0.001
+  },
+  "n_rows": 193,
+  "max_difference": 2.220446049250313e-16,
+  "mean_difference": 1.2122840871625486e-18,
+  "mismatching_rows": 0,
+  "resulting_metrics_via_deployed_path": {
+    "tree_ensemble_json": {
+      "accuracy": 0.9844559585492227,
+      "f1_macro": 0.9827929507563374
+    }
+  }
+}

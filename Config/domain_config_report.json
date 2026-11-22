@@ -1,0 +1,25 @@
+{
+  "model": {
+    "type": "TABULAR_ML",
+    "task": "classification",
+    "target_col": "Class"
+  },
+  "industry": {
+    "applied": "global_baseline",
+    "confidence": null,
+    "detected": true,
+    "evidence": [],
+    "active_domains": [
+      "healthcare",
+      "finance",
+      "real_estate",
+      "hr",
+      "global_baseline"
+    ]
+  },
+  "sensitive_columns_found": {},
+  "sensitive_columns_dropped": [],
+  "target_bounds": null,
+  "language": null,
+  "applied_domain_config_file": "/content/domain_config.yaml"
+}

@@ -1,0 +1,1036 @@
+{
+  "model_type": "ANN",
+  "paradigm": "ann",
+  "elapsed_sec": 48.812,
+  "settings": {
+    "enabled": true,
+    "strict": false,
+    "write_report": true,
+    "advisory_sample_rows": 20000,
+    "tabular": {
+      "standardize_null_tokens": true,
+      "null_token_max_share": 0.3,
+      "recoerce_numeric_text": true,
+      "advisory_backend": true
+    },
+    "text": {
+      "drop_empty_texts": false,
+      "report_language": true,
+      "report_text_stats": true,
+      "merge_dialogue": false,
+      "dialogue_window": 3
+    },
+    "sequence": {
+      "report": true,
+      "max_points": 200000
+    },
+    "images": {
+      "report": true,
+      "max_images": 3000,
+      "min_sharpness": 20.0,
+      "dup_max_hamming": 4
+    },
+    "rag": {
+      "dedupe_exact": true,
+      "drop_noisy_chunks": true,
+      "ocr_noise_threshold": 0.5,
+      "max_drop_frac": 0.2,
+      "min_chunk_chars": 20,
+      "strip_markup": true,
+      "anonymize": false,
+      "flatten_metadata": true
+    },
+    "rl": {
+      "dataset_path": null,
+      "episode_col": null,
+      "step_col": null,
+      "state_cols": null,
+      "action_col": null,
+      "reward_col": null,
+      "done_col": "done"
+    },
+    "pillars": {
+      "enabled": true,
+      "sample_rows": 5000,
+      "tabular": {
+        "mi_signal_check": true,
+        "label_quality": true,
+        "drop_label_issues": false,
+        "wide_screen": true,
+        "variant_audit": true,
+        "recon_gate": true
+      },
+      "geometric": {
+        "recon_gate": true,
+        "robust_cluster_probe": true,
+        "probe_rows": 3000
+      },
+      "text": {
+        "screen_boundary": true,
+        "perplexity_audit": true,
+        "profanity_terms": null
+      },
+      "rag": {
+        "reject_injection": true,
+        "profanity_action": "flag",
+        "perplexity_action": "flag",
+        "metadata_schema": null,
+        "reject_invalid_metadata": false,
+        "profanity_terms": null
+      },
+      "sequence": {
+        "winsor_window": 50,
+        "winsor_k": 4.0
+      },
+      "images": {
+        "channel_stats": true,
+        "max_images": 300,
+        "mean_tolerance": 0.15
+      }
+    }
+  },
+  "steps_executed_by_agent": [
+    {
+      "step": "null_token_standardiser",
+      "status": "noop",
+      "cells_set_missing": {},
+      "kept_as_category": {},
+      "recoerced_to_numeric": []
+    },
+    {
+      "step": "advisory_backend_fit",
+      "status": "applied",
+      "rows": 958,
+      "n_features_out": 27
+    },
+    {
+      "step": "pillar_mi_signal_check",
+      "status": "applied",
+      "n_zero_signal": 0,
+      "all_zero": false
+    },
+    {
+      "step": "pillar_label_quality",
+      "status": "applied",
+      "engine": "built-in confident learning",
+      "suspect_share": 0.0
+    },
+    {
+      "step": "pillar_wide_matrix",
+      "status": "noop",
+      "wide": false,
+      "n_kept": null
+    },
+    {
+      "step": "pillar_category_variants",
+      "status": "noop",
+      "columns": []
+    },
+    {
+      "step": "pillar_pca_gate",
+      "status": "error",
+      "error": "stage 'pillar_pca_gate' skipped after ValueError: reconstruction gate needs >= 20 rows and >= 2 numeric columns"
+    }
+  ],
+  "warnings": [
+    "stage 'pillar_pca_gate' skipped after ValueError: reconstruction gate needs >= 20 rows and >= 2 numeric columns"
+  ],
+  "findings": {
+    "advisory_backend": {
+      "task": "classification",
+      "n_features_out": 27,
+      "model_directives": [
+        "weight clipping max_norm(3.0) (ANN1)",
+        "HuberLoss instead of MSE (ANN10)",
+        "Focal loss / class_weight (ANN26)",
+        "LayerNorm/GroupNorm for small batches (ANN27)",
+        "Mish/LeakyReLU hidden activations (ANN28)",
+        "L1 on input weights (ANN37)",
+        "Input dropout 0.2 or PCA (ANN46)",
+        "post-train SHAP KernelExplainer callback (ANN49)"
+      ],
+      "class_weight": {
+        "0": 1.4427710843373494,
+        "1": 0.7651757188498403
+      },
+      "embedding_dims": {
+        "top-left-square": 1,
+        "top-middle-square": 1,
+        "top-right-square": 1,
+        "middle-left-square": 1,
+        "middle-middle-square": 1,
+        "middle-right-square": 1,
+        "bottom-left-square": 1,
+        "bottom-middle-square": 1,
+        "bottom-right-square": 1
+      },
+      "feature_names_sample": [
+        "top-left-square_b",
+        "top-left-square_o",
+        "top-left-square_x",
+        "top-middle-square_b",
+        "top-middle-square_o",
+        "top-middle-square_x",
+        "top-right-square_b",
+        "top-right-square_o",
+        "top-right-square_x",
+        "middle-left-square_b",
+        "middle-left-square_o",
+        "middle-left-square_x",
+        "middle-middle-square_b",
+        "middle-middle-square_o",
+        "middle-middle-square_x",
+        "middle-right-square_b",
+        "middle-right-square_o",
+        "middle-right-square_x",
+        "bottom-left-square_b",
+        "bottom-left-square_o",
+        "bottom-left-square_x",
+        "bottom-middle-square_b",
+        "bottom-middle-square_o",
+        "bottom-middle-square_x",
+        "bottom-right-square_b",
+        "bottom-right-square_o",
+        "bottom-right-square_x"
+      ],
+      "fitted_on_rows": 958
+    },
+    "pillars": {
+      "P1_mutual_info_signal": {
+        "status": "applied",
+        "task": "classification",
+        "rows_used": 958,
+        "features_scored": 9,
+        "noise_floor_mi": 0.004098,
+        "threshold": 0.004098,
+        "zero_signal_features": [],
+        "n_zero_signal": 0,
+        "top_features": [
+          [
+            "middle-middle-square",
+            0.0604
+          ],
+          [
+            "top-left-square",
+            0.0094
+          ],
+          [
+            "bottom-left-square",
+            0.0094
+          ],
+          [
+            "top-right-square",
+            0.0094
+          ],
+          [
+            "bottom-right-square",
+            0.0094
+          ],
+          [
+            "middle-left-square",
+            0.0049
+          ],
+          [
+            "middle-right-square",
+            0.0049
+          ],
+          [
+            "top-middle-square",
+            0.0049
+          ],
+          [
+            "bottom-middle-square",
+            0.0049
+          ]
+        ],
+        "all_zero_signal": false,
+        "marginal_all_zero_signal": false,
+        "advice": "every feature shows signal"
+      },
+      "P1_label_quality": {
+        "status": "applied",
+        "engine": "built-in confident learning",
+        "rows_checked": 958,
+        "n_suspect": 0,
+        "suspect_share": 0.0,
+        "suspects_per_class": {
+          "negative": 0,
+          "positive": 0
+        },
+        "advice": "labels look consistent"
+      },
+      "P2_wide_matrix": {
+        "status": "noop",
+        "reason": "958 rows x 9 cols is not wide",
+        "wide": false
+      },
+      "P4_category_variants": {}
+    }
+  },
+  "pipeline_features_delegated": [
+    {
+      "feature": "ingest_utf8_header_repair",
+      "what": "tolerant CSV scan, UTF-8 transcode, header repair",
+      "functions": [
+        "detect_ingestion_mode",
+        "load_tabular_lazy",
+        "_ensure_utf8_csv",
+        "_repair_csv_header_if_needed"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "header_normalisation",
+      "what": "column-name whitespace/newline clean-up",
+      "functions": [
+        "_normalize_column_names_lazy"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "numeric_like_text_coercion",
+      "what": "'$1,124,900 ' -> number",
+      "functions": [
+        "_coerce_numeric_like_strings_lazy",
+        "clean_tabular"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "schema_downcast",
+      "what": "dtype compaction before collect",
+      "functions": [
+        "compact_dataframe_schemas"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "streaming_collect",
+      "what": "double-buffered out-of-core collect",
+      "functions": [
+        "collect_streaming"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "ram_guard_scale_tiers",
+      "what": "row thinning instead of OOM, 10M+ row tiers",
+      "functions": [
+        "_scale_ram_guard_lazy",
+        "resolve_scale_plan",
+        "detect_hardware_profile",
+        "stratified_subsample_indices"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "input_quality_audit",
+      "what": "per-column quality score / threshold",
+      "functions": [
+        "audit_input_data_quality",
+        "audit_dataframe_quality",
+        "score_quality_stats"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "missing_target_rows",
+      "what": "rows with an empty target are dropped (and saved)",
+      "functions": [
+        "drop_empty_target_rows_from_input"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "duplicate_rows",
+      "what": "exact duplicate rows removed before the split (data_sanity)",
+      "functions": [],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "leakage_and_id_columns",
+      "what": "ID / index / leaking column removal",
+      "functions": [
+        "identify_leaking_columns",
+        "drop_leaking_columns",
+        "_drop_id_like_numeric_columns"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "column_curation",
+      "what": "empty/constant/duplicate/ID-like/free-text/noise column curator",
+      "functions": [
+        "auto_curate_columns"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "date_expansion",
+      "what": "date column -> year/month/day/... parts",
+      "functions": [
+        "expand_date_column",
+        "_looks_like_date_column"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "geo_distance",
+      "what": "lat/lon -> distance feature",
+      "functions": [
+        "_add_geo_distance_feature"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "high_cardinality",
+      "what": "engineer or drop high-cardinality categoricals",
+      "functions": [
+        "flag_high_cardinality_columns",
+        "engineer_or_drop_high_cardinality_columns"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "split_stratified",
+      "what": "train/val/test split (stratified)",
+      "functions": [
+        "split_data",
+        "quantile_stratified_split"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "median_imputation",
+      "what": "median imputation fitted on train",
+      "functions": [
+        "impute_numeric_median",
+        "apply_numeric_imputation"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "outlier_winsorize",
+      "what": "train-fitted winsorize caps",
+      "functions": [
+        "cap_outliers",
+        "apply_outlier_caps"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "target_outlier_removal",
+      "what": "IQR target-outlier removal on train",
+      "functions": [
+        "remove_target_outliers"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "multicollinearity",
+      "what": "VIF filter + |corr| redundancy filter",
+      "functions": [
+        "compute_vif",
+        "filter_by_vif",
+        "remove_redundant_features"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "categorical_encoding",
+      "what": "one-hot / label encoders saved in the recipe",
+      "functions": [
+        "fit_encoders",
+        "apply_saved_encoders",
+        "encode_target"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "scaling",
+      "what": "standard / minmax / robust scaler saved in the recipe",
+      "functions": [
+        "fit_scaler",
+        "apply_saved_scaler"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "feature_expansion",
+      "what": "log1p twins, ordinal / out-of-fold target / frequency encoding, high-card reinstatement",
+      "functions": [
+        "resolve_feature_expansion_config",
+        "discover_numeric_features",
+        "build_feature_expansion",
+        "fit_target_encoding",
+        "fit_frequency_encoding"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "robust_objective",
+      "what": "Huber / focal / balanced objective",
+      "functions": [
+        "configure_robust_objective",
+        "make_focal_objective"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "class_imbalance_smote",
+      "what": "SMOTE (KNN interpolation) when imbalanced",
+      "functions": [
+        "compute_class_imbalance_ratio",
+        "smote_oversample",
+        "auto_smote_if_imbalanced"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "regression_target_transform",
+      "what": "log/yeo target recipe + WLS weights",
+      "functions": [
+        "clean_regression_target",
+        "choose_target_transform",
+        "fit_regression_target_recipe",
+        "apply_regression_target_recipe",
+        "compute_wls_sample_weights"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "leak_and_determinism_warnings",
+      "what": "single-feature separator / deterministic target warnings",
+      "functions": [
+        "_single_feature_separator_warning",
+        "_regression_target_determinism_warning"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "drift_baseline_psi_ks",
+      "what": "train baseline + PSI/KS drift",
+      "functions": [
+        "build_drift_baseline",
+        "compute_drift",
+        "SlidingWindowDriftMonitor"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "safe_custom_formulas",
+      "what": "AST-sandboxed formula features",
+      "functions": [
+        "SafeExpression",
+        "apply_safe_formulas"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "step_ledger_blueprint",
+      "what": "applied_pipeline_steps ledger + per-family blueprint matrix",
+      "functions": [
+        "get_blueprint",
+        "PipelineStepLedger",
+        "auto_preprocess",
+        "save_recipe",
+        "load_recipe"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    },
+    {
+      "feature": "dl_dataloaders",
+      "what": "dense-tensor DataLoaders from the shared recipe",
+      "functions": [
+        "build_dataloaders"
+      ],
+      "missing_functions": [],
+      "status": "present"
+    }
+  ],
+  "pipeline_features_missing": [],
+  "agent_features": [
+    {
+      "feature": "null_token_standardiser",
+      "agent_rules": "ANN20/CL12",
+      "mode": "wired",
+      "implemented_by": "NullStandardizer -> polars/pandas implementation in PipelineDataArchitect.run_tabular",
+      "why_not_wired": "",
+      "ran_this_run": true
+    },
+    {
+      "feature": "numeric_text_recoercion",
+      "agent_rules": "ANN8/CL11/TAB8",
+      "mode": "wired",
+      "implemented_by": "NumericCoercer",
+      "why_not_wired": "",
+      "ran_this_run": false
+    },
+    {
+      "feature": "advisory_backend_fit",
+      "agent_rules": "ANN/TAB/CL/AN directives",
+      "mode": "audit",
+      "implemented_by": "TabularBackend (sample) -> model_directives, class weights, embedding dims, dropped features",
+      "why_not_wired": "",
+      "ran_this_run": true
+    },
+    {
+      "feature": "iterative_imputer_bayesridge",
+      "agent_rules": "ANN2",
+      "mode": "api",
+      "implemented_by": "IterativeImputer(BayesianRidge) in TabularBackend",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "missing_indicators",
+      "agent_rules": "ANN16/34",
+      "mode": "api",
+      "implemented_by": "SimpleImputer(add_indicator)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "variance_filter",
+      "agent_rules": "ANN4/CL2/TAB9",
+      "mode": "api",
+      "implemented_by": "VarianceFilter",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "category_label_normaliser",
+      "agent_rules": "TAB2",
+      "mode": "api",
+      "implemented_by": "CategoryNormalizer (lowercase/strip)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "cyclic_datetime",
+      "agent_rules": "ANN35/43/CL20",
+      "mode": "api",
+      "implemented_by": "DatetimeCyclic (sin/cos)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "safe_ratio_features",
+      "agent_rules": "ANN42/AN42/TAB44",
+      "mode": "api",
+      "implemented_by": "SafeRatios",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "polynomial_selectk",
+      "agent_rules": "ANN41/44/47",
+      "mode": "api",
+      "implemented_by": "NumericScaleBlock(PolynomialFeatures + SelectKBest)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "yeo_johnson_quantile_scaling",
+      "agent_rules": "ANN21/23/CL",
+      "mode": "api",
+      "implemented_by": "AdaptiveScaler / QuantileTransformer / PowerTransformer",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "conditional_l2_normaliser",
+      "agent_rules": "ANN36",
+      "mode": "api",
+      "implemented_by": "ConditionalNormalizer",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "train_range_clipper",
+      "agent_rules": "ANN40/AN23",
+      "mode": "api",
+      "implemented_by": "TrainRangeClipper",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "sparse_aware_scaling",
+      "agent_rules": "ANN22/CL23",
+      "mode": "api",
+      "implemented_by": "scale_sparse_aware",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "rare_class_merge_other",
+      "agent_rules": "ANN18",
+      "mode": "api",
+      "implemented_by": "TargetProcessor(Other_Target)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "multilabel_binarizer",
+      "agent_rules": "ANN13/33",
+      "mode": "api",
+      "implemented_by": "TargetProcessor(MultiLabelBinarizer)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "causal_rolling_features",
+      "agent_rules": "ANN50/AN41",
+      "mode": "api",
+      "implemented_by": "add_rolling_features (shift(1) causal)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "cusum_windowed",
+      "agent_rules": "AN43",
+      "mode": "api",
+      "implemented_by": "cusum_windowed",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "gower_distance",
+      "agent_rules": "CL6",
+      "mode": "api",
+      "implemented_by": "gower_distance (mixed-type clustering)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "pca_variance_target",
+      "agent_rules": "ANN46/CL",
+      "mode": "api",
+      "implemented_by": "PCA(variance)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "anchor_sampling",
+      "agent_rules": "CL28/44",
+      "mode": "api",
+      "implemented_by": "anchor_sample (huge-N clustering)",
+      "why_not_wired": "needs a replay step in the generated app.py (feature_recipe.json) -- not wired to avoid train/serve skew",
+      "ran_this_run": false
+    },
+    {
+      "feature": "ks_drift_monitor",
+      "agent_rules": "ANN9",
+      "mode": "api",
+      "implemented_by": "DriftMonitor(KS) -- the pipeline already has PSI+KS; kept for API parity",
+      "why_not_wired": "",
+      "ran_this_run": false
+    }
+  ],
+  "rule_coverage": {
+    "implemented": 41,
+    "model_side": 7,
+    "policy": 2
+  },
+  "pillars": {
+    "summary": {
+      "1": {
+        "name": "Data Quality",
+        "items": 3,
+        "complete": 3,
+        "by_mode": {
+          "audit": 2,
+          "wired": 1
+        }
+      },
+      "2": {
+        "name": "Statistical Geometry",
+        "items": 3,
+        "complete": 3,
+        "by_mode": {
+          "wired": 2,
+          "audit": 1
+        }
+      },
+      "3": {
+        "name": "Runtime & Production",
+        "items": 2,
+        "complete": 2,
+        "by_mode": {
+          "wired": 1,
+          "policy": 1
+        }
+      },
+      "4": {
+        "name": "Formatting Corruptions",
+        "items": 2,
+        "complete": 2,
+        "by_mode": {
+          "audit": 1,
+          "api": 1
+        }
+      },
+      "5": {
+        "name": "Adversarial Security",
+        "items": 1,
+        "complete": 1,
+        "by_mode": {
+          "audit": 1
+        }
+      }
+    },
+    "matrix": [
+      {
+        "pillar": 1,
+        "pillar_name": "Data Quality",
+        "item": "mi_signal_check",
+        "requirement": "mutual_info_classif/regression threshold (zero-signal guard)",
+        "functions": [
+          "mutual_info_signal_check"
+        ],
+        "mode": "audit",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 1,
+        "pillar_name": "Data Quality",
+        "item": "label_quality_cleanlab",
+        "requirement": "Cleanlab out-of-sample label-quality check",
+        "functions": [
+          "cleanlab_label_quality"
+        ],
+        "mode": "audit",
+        "missing_functions": [],
+        "complete": true,
+        "note": "drop of suspects only with data_architect_settings.pillars.drop_label_issues=true"
+      },
+      {
+        "pillar": 1,
+        "pillar_name": "Data Quality",
+        "item": "psi_drift_tracking",
+        "requirement": "PSI (and KS) drift tracking + alert",
+        "functions": [
+          "_psi",
+          "compute_drift",
+          "build_drift_baseline",
+          "SlidingWindowDriftMonitor"
+        ],
+        "mode": "wired",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 2,
+        "pillar_name": "Statistical Geometry",
+        "item": "yeo_johnson_scaling",
+        "requirement": "PowerTransformer(yeo-johnson) for skewed inputs",
+        "functions": [
+          "fit_scaler",
+          "apply_saved_scaler",
+          "AdaptiveScaler"
+        ],
+        "mode": "wired",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 2,
+        "pillar_name": "Statistical Geometry",
+        "item": "wide_matrix_reduction",
+        "requirement": "TruncatedSVD (sparse) / SelectFromModel(LassoCV) (wide)",
+        "functions": [
+          "wide_matrix_screen",
+          "fit_wide_matrix_selector"
+        ],
+        "mode": "audit",
+        "missing_functions": [],
+        "complete": true,
+        "note": "reports what would be kept; not applied to the served feature list"
+      },
+      {
+        "pillar": 2,
+        "pillar_name": "Statistical Geometry",
+        "item": "oof_target_aggregation",
+        "requirement": "out-of-fold target-guided encodings",
+        "functions": [
+          "fit_target_encoding",
+          "build_feature_expansion"
+        ],
+        "mode": "wired",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 3,
+        "pillar_name": "Runtime & Production",
+        "item": "handle_unknown_ignore",
+        "requirement": "handle_unknown='ignore' in every categorical encoder",
+        "functions": [
+          "fit_encoders",
+          "apply_saved_encoders"
+        ],
+        "mode": "wired",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 3,
+        "pillar_name": "Runtime & Production",
+        "item": "vectorised_numpy",
+        "requirement": "no per-row python loops in the transforms",
+        "functions": [],
+        "mode": "policy",
+        "missing_functions": [],
+        "complete": true,
+        "note": ""
+      },
+      {
+        "pillar": 4,
+        "pillar_name": "Formatting Corruptions",
+        "item": "category_text_normaliser",
+        "requirement": "lower()/strip() of categorical text",
+        "functions": [
+          "categorical_variant_audit",
+          "CategoryNormalizer"
+        ],
+        "mode": "audit",
+        "missing_functions": [],
+        "complete": true,
+        "note": "variants are REPORTED; auto-normalising the training data alone would break serving (app.py one-hot matches the raw string)"
+      },
+      {
+        "pillar": 4,
+        "pillar_name": "Formatting Corruptions",
+        "item": "preserve_nan_for_trees",
+        "requirement": "keep NaN for tree/boosting models",
+        "functions": [
+          "TabularBackend"
+        ],
+        "mode": "api",
+        "missing_functions": [],
+        "complete": true,
+        "note": "pipeline imputes before every model (median recipe replayed by app.py); native-NaN routing needs a replay change in app.py"
+      },
+      {
+        "pillar": 5,
+        "pillar_name": "Adversarial Security",
+        "item": "pca_reconstruction_gate",
+        "requirement": "PCA reconstruction-variance gate before the model",
+        "functions": [
+          "PCAReconstructionGate"
+        ],
+        "mode": "audit",
+        "missing_functions": [],
+        "complete": true,
+        "note": "threshold + held-out flag share reported; to_json() exports it for a serving replay"
+      }
+    ],
+    "incomplete_items": [],
+    "findings": {
+      "P1_mutual_info_signal": {
+        "status": "applied",
+        "task": "classification",
+        "rows_used": 958,
+        "features_scored": 9,
+        "noise_floor_mi": 0.004098,
+        "threshold": 0.004098,
+        "zero_signal_features": [],
+        "n_zero_signal": 0,
+        "top_features": [
+          [
+            "middle-middle-square",
+            0.0604
+          ],
+          [
+            "top-left-square",
+            0.0094
+          ],
+          [
+            "bottom-left-square",
+            0.0094
+          ],
+          [
+            "top-right-square",
+            0.0094
+          ],
+          [
+            "bottom-right-square",
+            0.0094
+          ],
+          [
+            "middle-left-square",
+            0.0049
+          ],
+          [
+            "middle-right-square",
+            0.0049
+          ],
+          [
+            "top-middle-square",
+            0.0049
+          ],
+          [
+            "bottom-middle-square",
+            0.0049
+          ]
+        ],
+        "all_zero_signal": false,
+        "marginal_all_zero_signal": false,
+        "advice": "every feature shows signal"
+      },
+      "P1_label_quality": {
+        "status": "applied",
+        "engine": "built-in confident learning",
+        "rows_checked": 958,
+        "n_suspect": 0,
+        "suspect_share": 0.0,
+        "suspects_per_class": {
+          "negative": 0,
+          "positive": 0
+        },
+        "advice": "labels look consistent"
+      },
+      "P2_wide_matrix": {
+        "status": "noop",
+        "reason": "958 rows x 9 cols is not wide",
+        "wide": false
+      },
+      "P4_category_variants": {}
+    }
+  }
+}

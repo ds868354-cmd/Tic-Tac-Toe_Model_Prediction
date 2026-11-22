@@ -1,0 +1,43 @@
+{
+  "name": "Tic-Tac-Toe Endgame Dataset",
+  "industry": "global_baseline",
+  "industry_source": "explicit (--industry / config)",
+  "model_type": "TABULAR_ML",
+  "task": "classification",
+  "source_url": "https://www.google.com/url?sa=i&source=web&rct=j&url=https://www.openml.org/d/50&ved=2ahUKEwi-zMWpj5mYAxWgcmwGHQjCIz0Qy_kOegYIAggIEAI&opi=89978449&cd&psig=AOvVaw0CmHEbNoavcYAoYGnn7ihb&ust=1795352483716000",
+  "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International). Originally donated by David W. Aha via the UCI Machine Learning Repository and hosted on OpenML, this dataset is openly available under CC BY 4.0 for academic, educational, and research purposes.",
+  "collection_method": "Yes (Supervised Binary Classification). The dataset is fully labelled with the target column Class, which indicates whether player x (the starting player) won the game (positive) or did not win (negative \u2014 i.e., lost or drew).",
+  "known_limitations": "\u2022 Purely Categorical & Symbolic Features: All 9 input attributes represent board squares (top-left-square to bottom-right-square) with nominal values x, o, or b (blank), requiring categorical encoding (like One-Hot Encoding) before training numerical ML models. \u2022 Endgame-Only Snapshot (No Sequential Move History): The dataset encodes only the complete set of 958 legal terminal board configurations after all moves are played\u2014it does not capture mid-game states, move order, or turn-by-turn strategy. \u2022 Deterministic Rule-Based Domain: Because Tic-Tac-Toe outcomes follow strict combinatorial rules (3-in-a-row), there is zero real-world noise or randomness; models must learn exact relational/spatial patterns (rows, columns, diagonals) rather than statistical distributions.",
+  "complete": true,
+  "missing_fields": [],
+  "defaulted_fields": [],
+  "field_sources": {
+    "source_url": "cli",
+    "license": "cli",
+    "collection_method": "cli",
+    "known_limitations": "cli"
+  },
+  "needs_owner_confirmation": false,
+  "metadata_file": null,
+  "n_rows_used": 958,
+  "n_test_rows": 193,
+  "class_distribution": {
+    "negative": 332,
+    "positive": 626
+  },
+  "dropped_columns": {},
+  "audit_findings": [
+    "the test split has only 193 rows: accuracy 0.984 has a 95% interval of [0.955, 0.995] -- treat differences inside it as noise (more data, or repeated / cross-validated evaluation, before comparing models)."
+  ],
+  "sensitive_features": [],
+  "sensitive_reviewed": {},
+  "sensitive_scan": {},
+  "sensitive_review_source": {},
+  "business_justified": {},
+  "sensitive_features_dropped": [],
+  "fairness_disparity": [],
+  "fairness_check_status": "NOT_APPLICABLE",
+  "fairness_review_pending": [],
+  "dropped_columns_category": {},
+  "unspecified_fields": []
+}

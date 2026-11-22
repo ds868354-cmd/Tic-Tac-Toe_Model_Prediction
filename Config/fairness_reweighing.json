@@ -1,0 +1,11 @@
+{
+  "status": "NOT_APPLICABLE",
+  "per_column": {},
+  "business_justified_accepted": {},
+  "threshold": 0.8,
+  "test_split_disparate_impact": {},
+  "reweighing": {
+    "applied": false,
+    "reason": "DROP_SENSITIVE_FEATURES=True: the protected columns were dropped before training, nothing to reweigh"
+  }
+}
